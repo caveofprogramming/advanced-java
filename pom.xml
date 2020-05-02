@@ -6,8 +6,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.caveofprogramming.examples</groupId>
-	<artifactId>guava-example</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>example-parent</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
 
 	<name>guava-example</name>
 	<!-- FIXME change it to the project's website -->
@@ -20,18 +21,16 @@
 	</properties>
 
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>29.0-jre</version>
-		</dependency>
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>29.0-jre</version>
 		</dependency>
 	</dependencies>
 
