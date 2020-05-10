@@ -6,6 +6,11 @@ import java.sql.SQLException;
 public class App {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		
+		int[] ids = {0, 1, 2};
+		String[] names = {"Sue", "Bob", "Charley"};
+		
+		
 		Class.forName("org.sqlite.JDBC");
 		
 		String dbUrl = "jdbc:sqlite:people.db";
@@ -17,11 +22,17 @@ public class App {
 		var sql = "create table if not exists user (id integer primary key, name text not null)";
 		stmt.execute(sql);
 		
-		sql = "insert into user (id, name) values (0, 'Bob')";
-		stmt.execute(sql);
+		sql = "insert into user (id, name) values (?, ?)";
+		var insertStmt = conn.prepareStatement(sql);
 		
-		sql = "insert into user (id, name) values (1, 'Mary')";
-		stmt.execute(sql);
+		for(int i = 0; i < ids.length; i++) {
+			insertStmt.setInt(1, ids[i]);
+			insertStmt.setString(2, names[i]);
+			
+			insertStmt.executeUpdate();
+		}
+		
+		insertStmt.close();
 		
 		sql = "select id, name from user";
 		var rs = stmt.executeQuery(sql);
