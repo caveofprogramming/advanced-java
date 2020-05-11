@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>com.caveofprogramming.db</groupId>
-	<artifactId>mysql-05070</artifactId>
+	<artifactId>mysql-05080</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
 	<name>mysql</name>
