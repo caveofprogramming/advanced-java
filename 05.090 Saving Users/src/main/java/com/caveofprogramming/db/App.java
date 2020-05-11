@@ -18,6 +18,11 @@ public class App {
 		
 		System.out.println("Connected");
 		
+		UserDao userDao = new UserDaoImpl();
+		
+		//userDao.save(new User("Mars"));
+		//userDao.save(new User("Mercury"));
+		userDao.save(new User("Neptune"));
 		
 		try {
 			db.close();
