@@ -101,6 +101,41 @@ public class UserDaoImplTest {
 		return retrieved;
 	}
 	
+	
+	@Test
+	public void testFindAndUpdate() throws SQLException {
+		var user = users.get(0);
+		
+		UserDao userDao = new UserDaoImpl();
+		
+		userDao.save(user);
+		
+		var maxId = getMaxId();
+		
+		user.setId(maxId);
+		
+		var retrievedUserOpt = userDao.findById(maxId);
+		
+		assertTrue("no user retrieved", retrievedUserOpt.isPresent());
+		
+		var retrievedUser = retrievedUserOpt.get();
+		
+		assertEquals("retrieved user doesn't match saved user", user, retrievedUser);
+		
+		user.setName("abcde");
+		
+		userDao.update(user);
+		
+		retrievedUserOpt = userDao.findById(maxId);
+		
+		assertTrue("no updated user retrieved", retrievedUserOpt.isPresent());
+		
+		retrievedUser = retrievedUserOpt.get();
+		
+		assertEquals("retrieved user doesn't match updated user", user, retrievedUser);
+
+	}
+	
 	@Test
 	public void testSaveMultiple() throws SQLException {	
 		UserDao userDao = new UserDaoImpl();
