@@ -1,21 +1,25 @@
 package app;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
-import java.util.Date;
 
 class User {	
 	public int id;
 }
 
 class Employee extends User {
-	public String name;
+	private String name;
 	private String password;
 	
 	private boolean setUpdated(int sequence) {
 		System.out.println("setUpdated: " + sequence);
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Employee [name=" + name + ", password=" + password + "]";
+	}	
+	
 }
 
 public class App {
@@ -24,14 +28,14 @@ public class App {
 
 		Class<Employee> clazz = Employee.class;
 		
-		var nameField = clazz.getField("name");
+		var nameField = clazz.getDeclaredField("name");
 		
-		System.out.println(nameField);
+		var user = new Employee();
 		
-		var setUpdatedMethod = clazz.getDeclaredMethod("setUpdated", int.class);
-		setUpdatedMethod.setAccessible(true);
+		nameField.setAccessible(true);
+		nameField.set(user, "Poseidon");
 		
-		setUpdatedMethod.invoke(new Employee(), 7);
+		System.out.println(user);
 	}
 
 }
