@@ -1,5 +1,6 @@
 package app;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -12,13 +13,14 @@ class Employee extends User {
 	private String password;
 	
 	private boolean setUpdated(int sequence) {
+		System.out.println("setUpdated: " + sequence);
 		return true;
 	}
 }
 
 public class App {
 
-	public static void main(String[] args) throws NoSuchFieldException, SecurityException, NoSuchMethodException {
+	public static void main(String[] args) throws NoSuchFieldException, SecurityException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 
 		Class<Employee> clazz = Employee.class;
 		
@@ -27,12 +29,9 @@ public class App {
 		System.out.println(nameField);
 		
 		var setUpdatedMethod = clazz.getDeclaredMethod("setUpdated", int.class);
+		setUpdatedMethod.setAccessible(true);
 		
-		System.out.println(setUpdatedMethod);
-		
-		var methodExists = Arrays.stream(clazz.getDeclaredMethods()).anyMatch(m -> m.getName().equals("setUpdated"));
-		
-		System.out.println(methodExists);
+		setUpdatedMethod.invoke(new Employee(), 7);
 	}
 
 }
