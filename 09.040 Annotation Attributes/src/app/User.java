@@ -3,11 +3,10 @@ package app;
 
 public class User {
 	
-	@Field
-	@Deprecated
+	@Field(key=true)
 	private Long id;
 	
-	@Field
+	@Field(value="id")
 	private String name;
 
 	private int sequence;
