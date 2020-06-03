@@ -8,6 +8,16 @@ public class Repository<T> {
 		
 		var clazz = t.getClass();
 		
+		var entities = clazz.getAnnotationsByType(Entity.class);
+		
+		var tableName = clazz.getSimpleName().toLowerCase();
+		
+		if(entities.length > 0) {
+			tableName = entities[0].value();
+		}
+		
+		System.out.println(tableName);
+		
 		var fields = clazz.getDeclaredFields();
 		
 		for(var field: fields) {
