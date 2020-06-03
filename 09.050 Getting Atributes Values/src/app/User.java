@@ -1,12 +1,11 @@
 package app;
 
-
 public class User {
 	
-	@Field(key=true)
+	@Field(value="id", isKey=true)
 	private Long id;
 	
-	@Field(value="id")
+	@Field
 	private String name;
 
 	private int sequence;
