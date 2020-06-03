@@ -9,5 +9,5 @@ import java.lang.annotation.Target;
 @Retention(RUNTIME)
 @Target(TYPE)
 public @interface Entity {
-	public int minSize() default 0;
+	String value() default "";
 }
