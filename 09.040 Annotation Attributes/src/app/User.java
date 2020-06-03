@@ -1,9 +1,10 @@
 package app;
 
-@Entity()
+
 public class User {
 	
 	@Field
+	@Deprecated
 	private Long id;
 	
 	@Field
