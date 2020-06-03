@@ -16,7 +16,7 @@ public class Repository<T> {
 		}
 
 		var fields = clazz.getDeclaredFields();
-		
+
 		ArrayList<String> fieldList = new ArrayList<>();
 
 		for (var field : fields) {
@@ -34,16 +34,16 @@ public class Repository<T> {
 			if (fieldName.length() == 0) {
 				fieldName = field.getName();
 			}
-			
-			if(!isKey) {
+
+			if (!isKey) {
 				fieldList.add(fieldName);
 			}
 		}
-		
-		String saveFields = fieldList.stream().collect(Collectors.joining(","));
-		String placeHolders = fieldList.stream().map(s -> "?").collect(Collectors.joining(","));
-		
-		String sql = String.format("insert into %s (%s) values (%s)", tableName, saveFields, placeHolders);
+
+		String sqlFields = fieldList.stream().collect(Collectors.joining(","));
+		String sqlPlaceholders = fieldList.stream().map(s -> "?").collect(Collectors.joining(","));
+
+		String sql = String.format("insert into %s (%s) values (%s)", tableName, sqlFields, sqlPlaceholders);
 		
 		System.out.println(sql);
 
