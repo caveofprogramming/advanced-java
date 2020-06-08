@@ -1,0 +1,12 @@
+create database swingdb;
+use swingdb;
+
+create table user (id int auto_increment primary key, name varchar(30) 
+not null, password varchar(30) not null);
+
+desc user;
+
+create user 'swing'@'localhost' identified by 'hello';
+
+grant all on swingdb.user to 'swing'@'localhost';
+
