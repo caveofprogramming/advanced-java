@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 
 public class MainPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
+	private UserFormListener formListener;
 	
 	
 	public MainPanel() {
@@ -37,6 +38,10 @@ public class MainPanel extends JPanel {
 		add(createFormPanel(), gc);
 	}
 	
+	public void setFormListener(UserFormListener formListener) {
+		this.formListener = formListener;
+	}
+	
 	private JPanel createFormPanel() {
 		JPanel panel = new JPanel();
 		
@@ -55,9 +60,12 @@ public class MainPanel extends JPanel {
 		var addButton = new JButton("Save");
 		
 		addButton.addActionListener(e -> {
-			String name = nameField.getText();
+			String username = nameField.getText();
 			String password = passField.getText();
-			System.out.println(name + ": " + password);
+			
+			if(formListener != null) {
+				formListener.formSubmitted(username, password);
+			}
 		});
 		
 		var gc = new GridBagConstraints();
