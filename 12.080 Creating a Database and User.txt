@@ -1,0 +1,10 @@
+create database springdb;
+
+create user 'springuser'@'localhost' identified by 'hello';
+
+# drop user 'springuser'@'localhost';
+
+grant all on springdb.* to 'springuser'@'localhost';
+
+
+
