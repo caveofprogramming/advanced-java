@@ -12,7 +12,7 @@
 	<groupId>com.caveofprogramming</groupId>
 	<artifactId>app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>13.070 Creating the Database</name>
+	<name>13.080 Layered Architecture</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
