@@ -1,2 +1,14 @@
-1. Installing Software
-2. 
+1. Using Git Version Control
+2. Building with Maven
+3. Building with Gradle
+4. Databases and MySQL
+5. The DAO Design Pattern
+6. Properties and Profiles
+7. Unit Testing with JUnit
+8. The Reflection API
+9. Implementing and Using Annotations
+10. Desktop Programming With Swing
+11. Java Web Projects, Servlets and JSPs
+12. Spring, Spring Boot and Spring Data JPA
+13. Creating a Spring Web Service
+14. A REST Desktop Client
